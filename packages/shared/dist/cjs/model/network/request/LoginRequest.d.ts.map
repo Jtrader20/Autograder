@@ -1,0 +1,1 @@
+{"version":3,"file":"LoginRequest.d.ts","sourceRoot":"","sources":["../../../../../src/model/network/request/LoginRequest.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,iBAAiB,EAAE,MAAM,qBAAqB,CAAA;AAEvD,MAAM,WAAW,YAAa,SAAQ,iBAAiB;IACnD,KAAK,EAAE,MAAM,CAAC;IACd,QAAQ,EAAE,MAAM,CAAA;CACnB"}

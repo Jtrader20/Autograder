@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+      "module": "ESNext",  // For ESM output
+      "target": "ESNext",
+      "moduleResolution": "Node",
+      "esModuleInterop": true,
+      "strict": true,
+      "declaration": true,  // Generate declaration files (.d.ts)
+      "declarationMap": true,
+      "outDir": "./dist/esm",  // Separate output folder for ESM files
+      "rootDir": "./src",
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
+  }
+  

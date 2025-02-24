@@ -1,0 +1,29 @@
+{
+  "name": "@autograder/server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "update_shared": "pnpm --filter @autograder/server add @autograder/shared@workspace:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.4.1",
+  "dependencies": {
+    "@autograder/shared": "workspace:^",
+    "bcryptjs": "^3.0.2",
+    "express": "^4.21.2",
+    "mysql2": "^3.12.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.4",
+    "ts-node": "^10.9.2"
+  }
+}

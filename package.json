@@ -1,0 +1,25 @@
+{
+  "name": "@autograder/main",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "pnpm --filter client"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.4.1",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.24.1",
+    "@typescript-eslint/parser": "^8.24.1",
+    "eslint": "^9.21.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-vue": "^9.32.0",
+    "prettier": "^3.5.2",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "typescript": "~5.7.2"
+  }
+}

@@ -1,0 +1,1 @@
+module.exports = require("@autograder/tailwind-config/postcss.config.cjs")
