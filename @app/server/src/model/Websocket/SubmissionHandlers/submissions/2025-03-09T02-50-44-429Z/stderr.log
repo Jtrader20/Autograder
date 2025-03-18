@@ -1,0 +1,153 @@
+FAIL ./A003.test.js
+  Train Class
+    ✓ should create a new train instance (12 ms)
+    ✓ should add passengers correctly
+    ✕ should not allow negative passengers (4 ms)
+    ✓ should increase speed when boosted (1 ms)
+    ✕ should not allow speed boost with negative value
+
+  ● Train Class › should not allow negative passengers
+
+    expect(received).toThrow(expected)
+
+    Expected substring: "Passenger count cannot be negative"
+
+    Received function did not throw
+
+      21 |
+      22 |     test("should not allow negative passengers", () => {
+    > 23 |         expect(() => myTrain.addPassengers(-5)).toThrow("Passenger count cannot be negative");
+         |                                                 ^
+      24 |     });
+      25 |
+      26 |     test("should increase speed when boosted", () => {
+
+      at Object.toThrow (A003.test.js:23:49)
+
+  ● Train Class › should not allow speed boost with negative value
+
+    expect(received).toThrow(expected)
+
+    Expected substring: "Speed boost cannot be negative"
+
+    Received function did not throw
+
+      30 |
+      31 |     test("should not allow speed boost with negative value", () => {
+    > 32 |         expect(() => myTrain.boostSpeed(-20)).toThrow("Speed boost cannot be negative");
+         |                                               ^
+      33 |     });
+      34 | });
+      35 |
+
+      at Object.toThrow (A003.test.js:32:47)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 3 passed, 5 total
+Snapshots:   0 total
+Time:        3.415 s
+Ran all test suites.
+Test results written to: jest-results.json
+Test execution failed:  Command failed: npx jest --config=jest.config.js --json --outputFile=jest-results.json
+FAIL ./A003.test.js
+  Train Class
+    ✓ should create a new train instance (12 ms)
+    ✓ should add passengers correctly
+    ✕ should not allow negative passengers (4 ms)
+    ✓ should increase speed when boosted (1 ms)
+    ✕ should not allow speed boost with negative value
+
+  ● Train Class › should not allow negative passengers
+
+    expect(received).toThrow(expected)
+
+    Expected substring: "Passenger count cannot be negative"
+
+    Received function did not throw
+
+      21 |
+      22 |     test("should not allow negative passengers", () => {
+    > 23 |         expect(() => myTrain.addPassengers(-5)).toThrow("Passenger count cannot be negative");
+         |                                                 ^
+      24 |     });
+      25 |
+      26 |     test("should increase speed when boosted", () => {
+
+      at Object.toThrow (A003.test.js:23:49)
+
+  ● Train Class › should not allow speed boost with negative value
+
+    expect(received).toThrow(expected)
+
+    Expected substring: "Speed boost cannot be negative"
+
+    Received function did not throw
+
+      30 |
+      31 |     test("should not allow speed boost with negative value", () => {
+    > 32 |         expect(() => myTrain.boostSpeed(-20)).toThrow("Speed boost cannot be negative");
+         |                                               ^
+      33 |     });
+      34 | });
+      35 |
+
+      at Object.toThrow (A003.test.js:32:47)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 3 passed, 5 total
+Snapshots:   0 total
+Time:        3.415 s
+Ran all test suites.
+Test results written to: jest-results.json
+
+stderr: FAIL ./A003.test.js
+  Train Class
+    ✓ should create a new train instance (12 ms)
+    ✓ should add passengers correctly
+    ✕ should not allow negative passengers (4 ms)
+    ✓ should increase speed when boosted (1 ms)
+    ✕ should not allow speed boost with negative value
+
+  ● Train Class › should not allow negative passengers
+
+    expect(received).toThrow(expected)
+
+    Expected substring: "Passenger count cannot be negative"
+
+    Received function did not throw
+
+      21 |
+      22 |     test("should not allow negative passengers", () => {
+    > 23 |         expect(() => myTrain.addPassengers(-5)).toThrow("Passenger count cannot be negative");
+         |                                                 ^
+      24 |     });
+      25 |
+      26 |     test("should increase speed when boosted", () => {
+
+      at Object.toThrow (A003.test.js:23:49)
+
+  ● Train Class › should not allow speed boost with negative value
+
+    expect(received).toThrow(expected)
+
+    Expected substring: "Speed boost cannot be negative"
+
+    Received function did not throw
+
+      30 |
+      31 |     test("should not allow speed boost with negative value", () => {
+    > 32 |         expect(() => myTrain.boostSpeed(-20)).toThrow("Speed boost cannot be negative");
+         |                                               ^
+      33 |     });
+      34 | });
+      35 |
+
+      at Object.toThrow (A003.test.js:32:47)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 3 passed, 5 total
+Snapshots:   0 total
+Time:        3.415 s
+Ran all test suites.
+Test results written to: jest-results.json
+

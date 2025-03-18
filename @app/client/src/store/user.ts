@@ -12,7 +12,7 @@ export const useUserStore = defineStore('User', {
         lastName: '',
         alias: '',
         roles: [''],
-        authToken: '',
+        authtoken: '',
         graceDays: 0,
 
     }),
@@ -38,7 +38,7 @@ export const useUserStore = defineStore('User', {
 
         async logout() {
             try {
-                await this.userservice.logout(this.authToken)
+                await this.userservice.logout(this.authtoken)
                 this.resetFields()
                 router.push('/')
             } catch (error) {
@@ -52,7 +52,7 @@ export const useUserStore = defineStore('User', {
             this.alias = user.alias
             this.graceDays = user.graceDays
 
-            this.authToken = auth.token,
+            this.authtoken = auth.token,
             this.roles = role.roles
 
         },
@@ -62,16 +62,25 @@ export const useUserStore = defineStore('User', {
             this.alias = ''
             this.graceDays = 0
 
-            this.authToken = '',
+            this.authtoken = '',
             this.roles = ['']
         }
     },
     getters: {
+        getAuthtoken: (state) => {
+            return state.authtoken
+        },
+        getAlias: (state) => {
+            return state.alias
+        },
         isLoggedIn: (state) => {
-            return !!state.authToken
+            return !!state.authtoken
         },
         isAdmin: (state) => {
-            return state.roles.some(role => role === "ADMIN")
+            return state.roles.some(role => role === 'ADMIN')
+        },
+        isUser: (state) =>  {
+            return state.roles.some(role => role == 'USER')
         },
         fullName: (state) => {
             return `${state.firstName} ${state.lastName}`
@@ -81,6 +90,6 @@ export const useUserStore = defineStore('User', {
             const firstInitial = state.firstName ? state.firstName[0].toUpperCase() : ''
             const lastIniital = state.lastName ? state.lastName[0].toUpperCase() : ''
             return `${firstInitial}${lastIniital}`
-        }
+        },
     }
 })

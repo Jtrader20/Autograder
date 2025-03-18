@@ -1,0 +1,1 @@
+{"version":3,"file":"SubmissionStatTimeRequest.d.ts","sourceRoot":"","sources":["../../../../../src/model/network/request/SubmissionStatTimeRequest.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,iBAAiB,EAAE,MAAM,qBAAqB,CAAA;AAEvD,MAAM,WAAW,yBAA0B,SAAQ,iBAAiB;IAChE,SAAS,EAAE,MAAM,CAAC;IAClB,OAAO,EAAE,MAAM,CAAC;CACnB"}

@@ -45,6 +45,7 @@
                 class="px-10 py-4 rounded-md w-48 flex justify-center items-center bg-success cursor-pointer"
                 tabindex="0"
                 @click="submit"
+                @keydown.enter="submit"
             >
                 {{ buttonText }}
             </div>

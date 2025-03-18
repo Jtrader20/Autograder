@@ -1,0 +1,1 @@
+{"version":3,"file":"SubmissionRequest.d.ts","sourceRoot":"","sources":["../../../../../src/model/network/request/SubmissionRequest.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAE,MAAM,eAAe,CAAC;AAE5C,MAAM,WAAW,iBAAkB,SAAQ,WAAW;IAClD,KAAK,EAAE,MAAM,CAAC;IACd,YAAY,EAAE,MAAM,CAAA;CACvB"}

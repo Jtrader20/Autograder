@@ -1,11 +1,7 @@
-import { Role } from "@autograder/shared"
+import { Role, RoleTypes } from "@autograder/shared"
 import { RoleDAO } from "../interface/RoleDAO";
 import { DB } from "./database/SQLDatabase";
-
-enum Roles {
-    USER = "USER",
-    ADMIN = "ADMIN"
-}
+import { RowDataPacket } from "mysql2";
 
 export class RoleDAOImp implements RoleDAO {
     async createRole(alias: string): Promise<Role> {
@@ -15,11 +11,31 @@ export class RoleDAOImp implements RoleDAO {
                 VALUES (?, ?)
             `
 
-            await connection.execute(SQL, [alias, Roles.USER])
-            await connection.execute(SQL, [alias, Roles.ADMIN])
+            await connection.execute(SQL, [alias, RoleTypes.USER])
+            await connection.execute(SQL, [alias, RoleTypes.ADMIN])
 
-            const RoleArray: string[] = [Roles.USER, Roles.ADMIN]
+            const RoleArray: RoleTypes[] = [RoleTypes.USER, RoleTypes.ADMIN]
             return new Role(RoleArray)
+        })
+    }
+
+    async readRolesByAlias(alias: string): Promise<Role | null> {
+        return await DB.databaseOperation<Role | null>( async (connection) => {
+            const SQL = `
+                SELECT role FROM UserRole WHERE alias = ?
+            `
+
+            const [rows] = await connection.execute<RowDataPacket[]>(SQL, [alias])
+
+            if (Array.isArray(rows) && rows.length > 0) {
+                const roles: RoleTypes[] = []
+                rows.forEach((row) => {
+                    const { role } = row
+                    roles.push(role)
+                })
+                return new Role(roles)
+            }
+            return null
         })
     }
 }

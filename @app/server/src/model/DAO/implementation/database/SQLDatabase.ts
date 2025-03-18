@@ -1,6 +1,10 @@
 import config from "../../../../config";
 import mysql, { RowDataPacket } from "mysql2/promise";
 import DBModel from "./DBModel"; 
+import DBAssignmentData from "./data/DBAssignmentData";
+import DBUserData from "./data/DBUserData";
+import DBUserRoleData from "./data/DBUserRoleData";
+import DBSubmissionData from "./data/DBSubmissionData";
 
 export class SQLDatabase {
     private static instance: SQLDatabase;
@@ -31,6 +35,27 @@ export class SQLDatabase {
                     for (const statement of DBModel) {
                         await connection.query(statement);
                     }
+
+                    for (const statement of DBAssignmentData) {
+                        await connection.query(statement)
+                    }
+                    console.log("Inserted Assignment data")
+
+                    for (const statement of DBUserData) {
+                        await connection.query(statement)
+                    }
+                    console.log("Inserted User Data")
+
+                    for (const statement of DBUserRoleData) {
+                        await connection.query(statement)
+                    }
+                    console.log("Inserted UserRole Data")
+
+                    for (const statement of DBSubmissionData) {
+                        await connection.query(statement)
+                    }
+                    console.log("Inserted Submission Data")
+                    
                     console.log("Database setup complete.");
                 } else {
                     console.log("Database already exists.");

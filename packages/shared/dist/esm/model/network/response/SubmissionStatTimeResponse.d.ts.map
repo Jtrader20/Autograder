@@ -1,0 +1,1 @@
+{"version":3,"file":"SubmissionStatTimeResponse.d.ts","sourceRoot":"","sources":["../../../../../src/model/network/response/SubmissionStatTimeResponse.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,qBAAqB,EAAE,MAAM,iCAAiC,CAAC;AACxE,OAAO,EAAE,kBAAkB,EAAE,MAAM,sBAAsB,CAAC;AAE1D,MAAM,WAAW,0BAA2B,SAAQ,kBAAkB;IAClE,kBAAkB,EAAE,qBAAqB,EAAE,CAAA;CAC9C"}

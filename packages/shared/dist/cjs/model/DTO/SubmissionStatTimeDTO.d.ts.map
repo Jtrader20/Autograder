@@ -1,0 +1,1 @@
+{"version":3,"file":"SubmissionStatTimeDTO.d.ts","sourceRoot":"","sources":["../../../../src/model/DTO/SubmissionStatTimeDTO.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,qBAAqB;IAClC,QAAQ,CAAC,UAAU,EAAE,MAAM,CAAC;IAC5B,QAAQ,CAAC,aAAa,EAAE,MAAM,CAAC;IAC/B,QAAQ,CAAC,QAAQ,EAAE,MAAM,CAAC;IAC1B,QAAQ,CAAC,IAAI,EAAE,MAAM,CAAA;CACxB"}

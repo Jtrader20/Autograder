@@ -17,6 +17,16 @@ module.exports = {
           warning: "var(--color-warning)",
           success: "var(--color-success)",
         },
+        fill: {
+          primary: "var(--color-primary)",
+          "primary-alt": "var(--color-primary-alt)",
+          secondary: "var(--color-secondary)",
+          "secondary-alt": "var(--color-secondary-alt)",
+          accent: "var(--color-accent)",
+          danger: "var(--color-danger)",
+          warning: "var(--color-warning)",
+          success: "var(--color-success)",
+        }
       },
     },
     plugins: [],

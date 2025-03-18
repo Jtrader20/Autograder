@@ -1,0 +1,1 @@
+{"version":3,"file":"SubmissionStatAvgResponse.d.ts","sourceRoot":"","sources":["../../../../../src/model/network/response/SubmissionStatAvgResponse.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,oBAAoB,EAAE,MAAM,gCAAgC,CAAC;AACtE,OAAO,EAAE,kBAAkB,EAAE,MAAM,sBAAsB,CAAC;AAE1D,MAAM,WAAW,yBAA0B,SAAQ,kBAAkB;IACjE,iBAAiB,EAAE,oBAAoB,CAAA;CAC1C"}

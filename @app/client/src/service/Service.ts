@@ -1,4 +1,4 @@
-import { ServerFacade } from "../network/ServerFacade";
+import { ServerFacade } from "../network/http/ServerFacade";
 
 export class Service {
     protected facade: ServerFacade

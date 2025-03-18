@@ -1,0 +1,1 @@
+{"version":3,"file":"SubmissionStatGaugeResponse.d.ts","sourceRoot":"","sources":["../../../../../src/model/network/response/SubmissionStatGaugeResponse.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,sBAAsB,EAAE,MAAM,kCAAkC,CAAC;AAC1E,OAAO,EAAE,kBAAkB,EAAE,MAAM,sBAAsB,CAAC;AAE1D,MAAM,WAAW,2BAA4B,SAAQ,kBAAkB;IACnE,mBAAmB,EAAE,sBAAsB,EAAE,CAAA;CAChD"}

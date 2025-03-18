@@ -1,0 +1,1 @@
+{"version":3,"file":"TaskDTO.d.ts","sourceRoot":"","sources":["../../../../src/model/DTO/TaskDTO.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,OAAO;IACpB,MAAM,EAAE,MAAM,CAAA;IACd,KAAK,EAAE,MAAM,CAAA;IACb,WAAW,EAAE,MAAM,CAAA;IACnB,UAAU,EAAE,MAAM,CAAA;IAClB,KAAK,EAAE,MAAM,CAAA;CAChB"}

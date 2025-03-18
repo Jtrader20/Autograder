@@ -1,0 +1,12 @@
+PASS ./A002.test.js
+  Car Class
+    ✓ should create a new car instance (15 ms)
+    ✓ should increase mileage when driven (2 ms)
+    ✓ should throw an error for negative miles (67 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       3 passed, 3 total
+Snapshots:   0 total
+Time:        3.197 s
+Ran all test suites.
+Test results written to: jest-results.json

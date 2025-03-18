@@ -1,4 +1,4 @@
-import { User, AuthToken, Role, RegisterRequest, AuthRequest, LoginRequest } from "@autograder/shared";
+import { User, AuthToken, Role, RegisterRequest, AuthRequest, LoginRequest, UserDTO, UserRequest } from "@autograder/shared";
 import { Service } from "./Service";
 
 
@@ -29,5 +29,14 @@ export class UserService extends Service {
         }
 
         return this.facade.logout(request)
+    }
+
+    public async getUserList(authToken: string, alias: string): Promise<User[]> {
+        const request: UserRequest = {
+            alias,
+            authToken
+        }
+
+        return this.facade.getUserList(request)
     }
 }

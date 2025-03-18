@@ -9,9 +9,6 @@ const LoginHandler = async (req: Request, res: Response): Promise<void> => {
         const request: LoginRequest = req.body
         const userservice: UserService = new UserService(SQLFactory.getInstance())
         const [user, token, role]: [User, AuthToken, Role] = await userservice.login(request.alias, request.password)
-        console.table(user)
-        console.table(token)
-        console.table(role)
         const response: AuthResponse = {
             UserDTO: user.DTO,
             AuthtokenDTO: token.DTO,

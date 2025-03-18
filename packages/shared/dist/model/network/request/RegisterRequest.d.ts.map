@@ -1,1 +1,0 @@
-{"version":3,"file":"RegisterRequest.d.ts","sourceRoot":"","sources":["../../../../src/model/network/request/RegisterRequest.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,iBAAiB,EAAE,MAAM,qBAAqB,CAAC;AAExD,MAAM,WAAW,eAAgB,SAAQ,iBAAiB;IACtD,SAAS,EAAE,MAAM,CAAC;IAClB,QAAQ,EAAE,MAAM,CAAC;IACjB,KAAK,EAAE,MAAM,CAAC;IACd,QAAQ,EAAE,MAAM,CAAA;CACnB"}

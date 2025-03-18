@@ -1,4 +1,4 @@
 export default {
     path: 'http://localhost:4000',
-    websocketPath: ''
+    websocketPath: 'ws://localhost:4000'
 }

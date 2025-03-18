@@ -5,7 +5,7 @@ import { RowDataPacket } from "mysql2";
 import bcrypt from 'bcryptjs'
 
 export class UserDAOImp implements UserDAO {
-    async createUser(alias: string, firstName: string, lastName: string, hashedPassword: string): Promise<User> {
+    public async createUser(alias: string, firstName: string, lastName: string, hashedPassword: string): Promise<User> {
         return await DB.databaseOperation<User>( async (connection) => {
             const SQL = `
                 INSERT INTO User (alias, firstName, lastName, hashedPassword)
@@ -18,10 +18,38 @@ export class UserDAOImp implements UserDAO {
         })
     }
 
-    async readUserByAlias(alias: string): Promise<User | null> {
+    public async readUsers(): Promise<User[]> {
+        return await DB.databaseOperation<User[]>( async (connection) => {
+            const SQL = `
+                SELECT *
+                FROM User u
+                JOIN UserRole ur ON u.alias = ur.alias
+                WHERE ur.role = 'USER'
+                ORDER BY lastName ASC, firstName ASC
+            `;
+
+            const [rows] = await connection.execute<RowDataPacket[]>(SQL)
+
+            const users: User[] = []
+
+            if (Array.isArray(rows) && rows.length > 0) {
+                rows.forEach((row) => {
+                    const { alias, firstName, lastName, graceDays } = row
+                    const user = new User(firstName, lastName, alias, graceDays)
+                    users.push(user)
+                })
+            }
+
+            return users
+        })
+    }
+
+    public async readUserByAlias(alias: string): Promise<User | null> {
         return await DB.databaseOperation<User | null>( async (connection) => {
             const SQL = `
-                SELECT * FROM User WHERE alias = ?
+                SELECT * 
+                FROM User 
+                WHERE alias = ?
             `
 
             const [rows] = await connection.execute<RowDataPacket[]>(SQL, [alias])
@@ -35,21 +63,17 @@ export class UserDAOImp implements UserDAO {
         })
     }
 
-    async readUserByAliasPassword(alias: string, password: string): Promise<User | null> {
+    public async readUserByAliasPassword(alias: string, password: string): Promise<User | null> {
         return await DB.databaseOperation<User | null>( async (connection) => {
-            console.log('here1')
-            console.log(alias)
             const SQL = `
-                SELECT * FROM User WHERE alias = ?
+                SELECT * 
+                FROM User 
+                WHERE alias = ?
             `
 
             const [rows] = await connection.execute<RowDataPacket[]>(SQL, [alias])
-            console.log('here 2')
             if (Array.isArray(rows) && rows.length > 0) {
-                console.log('here 3')
                 const { alias, firstName, lastName, graceDays, hashedPassword } = rows[0]
-
-                console.table(rows[0])
 
                 if (await bcrypt.compare(password, hashedPassword)) {
                     return new User(firstName, lastName, alias, graceDays)
@@ -59,4 +83,16 @@ export class UserDAOImp implements UserDAO {
             return null
         })
     }
+
+    public async updateUserGraceDays(alias: string, updatedgracedaycount: number): Promise<void> {
+        return await DB.databaseOperation<void>( async (connection) => {
+            const SQL = `
+                UPDATE User
+                SET graceDays = ?
+                WHERE alias = ?
+            `
+
+            await connection.execute(SQL, [updatedgracedaycount, alias])
+        })
+    } 
 }

@@ -1,0 +1,1 @@
+{"version":3,"file":"AssignmentResponse.d.ts","sourceRoot":"","sources":["../../../../../src/model/network/response/AssignmentResponse.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAE,MAAM,yBAAyB,CAAC;AACxD,OAAO,EAAE,kBAAkB,EAAE,MAAM,sBAAsB,CAAC;AAE1D,MAAM,WAAW,kBAAmB,SAAQ,kBAAkB;IAC1D,WAAW,EAAE,aAAa,EAAE,CAAA;CAC/B"}

@@ -32,6 +32,18 @@ export class AuthDAOImp implements AuthDAO {
         })
     }
 
+    async readAuthTokenWithAlias(authToken: string, alias: string): Promise<boolean> {
+        return await DB.databaseOperation<boolean> ( async (connection) => {
+            const SQL = `
+                SELECT * FROM Auth WHERE token = ? AND alias = ?
+            `
+
+            const [rows] = await connection.execute<RowDataPacket[]>(SQL, [authToken, alias])
+
+            return Array.isArray(rows) && rows.length > 0
+        })
+    }
+
     async deleteAuthToken(authToken: string): Promise<void> {
         return await DB.databaseOperation( async (connection) => {
             const SQL = `

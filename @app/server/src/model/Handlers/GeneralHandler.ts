@@ -5,13 +5,11 @@ enum StatusTypes {
     SERVER_ERROR = 500
 }
 
-
-
 const generalHandler = async (res: Response, handlerOperation: () => Promise<void>): Promise<void>  => {
     try {
         await handlerOperation()
     } catch (error) {
-        console.error(error)
+        console.log((error as Error).message)
         let statusCode = StatusTypes.SERVER_ERROR
         let message = "Internal Server Error"
 

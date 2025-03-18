@@ -1,0 +1,14 @@
+PASS ./A003.test.js
+  Train Class
+    ✓ should create a new train instance (3 ms)
+    ✓ should add passengers correctly
+    ✓ should not allow negative passengers (5 ms)
+    ✓ should increase speed when boosted
+    ✓ should not allow speed boost with negative value (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       5 passed, 5 total
+Snapshots:   0 total
+Time:        2.029 s
+Ran all test suites.
+Test results written to: jest-results.json

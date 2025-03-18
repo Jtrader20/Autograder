@@ -23,12 +23,21 @@
                 </div>
             </RouterLink>
             <RouterLink 
-                to="/admin"
+                to="/scores"
                 class="flex items-center justify-center px-4 h-full"
                 v-if="store.isAdmin"
             >
                 <div>
-                    Admin
+                    Scores
+                </div>
+            </RouterLink>
+            <RouterLink 
+                to="/metrics"
+                class="flex items-center justify-center px-4 h-full"
+                v-if="store.isAdmin"
+            >
+                <div>
+                    Metrics
                 </div>
             </RouterLink>
             <RouterLink
