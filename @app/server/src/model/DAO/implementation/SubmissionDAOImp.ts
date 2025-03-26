@@ -84,7 +84,7 @@ export class SubmissionDAOImp implements SubmissionDAO {
                     SELECT u.alias 
                     FROM User u
                     JOIN UserRole ur ON u.alias = ur.alias
-                    WHERE ur.role = 'USER'
+                    WHERE ur.role = 'USER' AND ur.role != 'ADMIN'
                 ),
                 RankedSubmissions AS (
                     -- Rank submissions by highest score, preferring the latest in case of a tie
@@ -142,7 +142,7 @@ export class SubmissionDAOImp implements SubmissionDAO {
                     SELECT u.alias 
                     FROM User u
                     JOIN UserRole ur ON u.alias = ur.alias
-                    WHERE ur.role = 'USER'
+                    WHERE ur.role = 'USER' AND ur.role != 'ADMIN'
                 ),
                 RankedSubmissions AS (
                     -- Rank submissions by highest score, preferring earlier ones in case of a tie

@@ -1,12 +1,16 @@
 import { ClientCommunicator } from "./ClientCommunicator";
 import config from '../../config'
-import { RegisterRequest, User, AuthToken, Role, AuthResponse, AuthRequest, AutograderResponse, LoginRequest, Assignment, AssignmentResponse, Submission, SubmissionRequest, SubmissionResponse, SubmissionStatTimeResponse, SubmissionStatTimeRequest, SubmissionStatTime, SubmissionStatGaugeResponse, SubmissionStatGauge, SubmissionStatAvg, SubmissionStatAvgResponse, UserRequest, UserListResponse, UserAssignment, UserAssignmentsResponse } from "@autograder/shared";
+import { RegisterRequest, User, AuthToken, Role, AuthResponse, AuthRequest, AutograderResponse, LoginRequest, Assignment, AssignmentResponse, Submission, SubmissionRequest, SubmissionResponse, SubmissionStatTimeResponse, SubmissionStatTimeRequest, SubmissionStatTime, SubmissionStatGaugeResponse, SubmissionStatGauge, SubmissionStatAvg, SubmissionStatAvgResponse, UserRequest, UserListResponse, UserAssignment, UserAssignmentsResponse, GraceDaysRequest } from "@autograder/shared";
 
 
 
 export class ServerFacade {
     private SERVER_URL = config.path
     private clientCommunicator = new ClientCommunicator(this.SERVER_URL)
+
+    public async updateGraceDays(request: GraceDaysRequest): Promise<void> {
+        await this.clientCommunicator.doPut<GraceDaysRequest, AutograderResponse>(request, '/api/user')
+    }
 
     public async register(request: RegisterRequest): Promise<[User, AuthToken, Role]> {
         const response = await this.clientCommunicator.doPost<RegisterRequest, AuthResponse>(request, '/api/auth')

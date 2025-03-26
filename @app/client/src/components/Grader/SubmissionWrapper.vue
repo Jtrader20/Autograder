@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <div class="h-96 m-h-96">
+        <div class="h-96 min-h-96">
             <div class="h-24 flex items-center justify-between bg-secondary border-secondary border-2 px-8 font-mono">
                 <div>
                     <div>
@@ -43,7 +43,7 @@
                 v-if="showSubmissions"
             >
                 <div v-for="(submission, index) in submissions">
-                    <SubmissionInfo :submission="submission" :key="index"/>
+                    <SubmissionInfo :submission :key="index"/>
                 </div>
             </div>
             <div

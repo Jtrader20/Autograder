@@ -1,4 +1,4 @@
-import { Role, RoleTypes } from "@autograder/shared";
+import { AuthToken, Role, RoleTypes } from "@autograder/shared";
 import { DAOFactory } from "../DAO/factory/DAOFactory";
 import { AssignmentDAO } from "../DAO/interface/AssignmentDAO";
 import { AuthDAO } from "../DAO/interface/AuthDAO";
@@ -26,14 +26,32 @@ export class Service {
         this.UserAssignmentDAO = factory.createUserAssignmentDAO()
     }
 
+    protected timeout: number = 15 * 60 * 1000
+
     protected AdminPolicy: RolePolicy = (roles) => roles.includes(RoleTypes.ADMIN);
 
+    private async changeToken(auth: AuthToken): Promise<boolean> {
+        const timestamp = new Date(auth.token).getTime()
+        const now = new Date().getTime()
+        if (timestamp - now > this.timeout) {
+            await this.AuthDAO.deleteAuthToken(auth.token)
+            return false
+        }
+        const updatedtimestamp = new Date(now + this.timeout).getTime()
+        await this.AuthDAO.updateTimestamp(auth.token, updatedtimestamp)
+        return true 
+    }
+
     private async validateToken(token: string): Promise<boolean> {
-        return await this.AuthDAO.readAuthToken(token);
+        const auth =  await this.AuthDAO.readAuthToken(token);
+        if (!auth) return false
+        return await this.changeToken(auth)
     }
 
     private async userMatchesToken(token: string, alias: string): Promise<boolean> {
-        return await this.AuthDAO.readAuthTokenWithAlias(token, alias);
+        const auth =  await this.AuthDAO.readAuthTokenWithAlias(token, alias);
+        if (!auth) return false
+        return await this.changeToken(auth)
     }
 
     protected async hasRole(alias: string, policy: RolePolicy): Promise<boolean> {

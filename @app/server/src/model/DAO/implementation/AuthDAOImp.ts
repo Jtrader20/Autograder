@@ -20,27 +20,53 @@ export class AuthDAOImp implements AuthDAO {
         })
     }
 
-    async readAuthToken(authToken: string): Promise<boolean> {
-        return await DB.databaseOperation<boolean>( async (connection) => {
+    async readAuthToken(authToken: string): Promise<AuthToken | null> {
+        return await DB.databaseOperation<AuthToken | null>( async (connection) => {
             const SQL = `
-                SELECT * FROM Auth WHERE token = ?
+                SELECT * 
+                FROM Auth 
+                WHERE token = ?
             `
 
             const [rows] = await connection.execute<RowDataPacket[]>(SQL, [authToken])
 
-            return Array.isArray(rows) && rows.length > 0
+            if (Array.isArray(rows) && rows.length > 0) {
+                const { token, timestamp } = rows[0]
+                return new AuthToken(token, timestamp)
+            } 
+
+            return null
         })
     }
 
-    async readAuthTokenWithAlias(authToken: string, alias: string): Promise<boolean> {
-        return await DB.databaseOperation<boolean> ( async (connection) => {
+    async readAuthTokenWithAlias(authToken: string, alias: string): Promise<AuthToken | null> {
+        return await DB.databaseOperation<AuthToken | null> ( async (connection) => {
             const SQL = `
-                SELECT * FROM Auth WHERE token = ? AND alias = ?
+                SELECT * 
+                FROM Auth 
+                WHERE token = ? AND alias = ?
             `
 
             const [rows] = await connection.execute<RowDataPacket[]>(SQL, [authToken, alias])
 
-            return Array.isArray(rows) && rows.length > 0
+            if (Array.isArray(rows) && rows.length > 0) {
+                const { token, timestamp } = rows[0]
+                return new AuthToken(token, timestamp)
+            } 
+
+            return null
+        })
+    }
+
+    async updateTimestamp(authToken: string, timestamp: number): Promise<void> {
+        return await DB.databaseOperation(async (connection) => {
+            const SQL = `
+                UPDATE Auth
+                SET timestamp = FROM_UNIXTIME(? / 1000)
+                WHERE token = ?
+            `
+
+            await connection.execute(SQL, [timestamp, authToken])
         })
     }
 

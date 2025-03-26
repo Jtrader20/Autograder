@@ -20,9 +20,13 @@ export const useScoresStore = defineStore('Scores', {
             direction: '', // ASC or DESC,
             assignment: null as string | null,
             assignmentcateogory: null as string | null
-        }
+        },
+        isLoading: false
     }),
     getters: {
+        isloading(state) {
+            return state.isLoading
+        },
         filteredscores(state) {
             let scores = state.Scores.filter((user: { name: string }) => {
                 return user.name.toLowerCase().includes(state.filtercriteria.name.toLowerCase())
@@ -87,7 +91,17 @@ export const useScoresStore = defineStore('Scores', {
             const user = this.Scores.find((user: { alias: string}) => user.alias === alias)
             if (user) {
                 user.gracedays = value
-                // save to database
+                await this.updategracedaysDB(alias, value)
+            }
+        },
+        async updategracedaysDB(alias: string, value: number) {
+            try {
+                const userstore = useUserStore()
+                const admin = userstore.getAlias
+                const token = userstore.getAuthtoken
+                await this.userservice.updateUserGraceDays(token, admin, alias, value)
+            } catch (error) {
+                console.error('Error updating gracedays', error)
             }
         },
         setFilterCriteria(value: string) {
@@ -146,10 +160,18 @@ export const useScoresStore = defineStore('Scores', {
             }
         },
         async mountscores() {
+            this.isLoading = true
             await this.requestAssignments()
             await this.requestUsers()
             await this.requestUserAssignments()
             this.generateScoresArray()
+            this.isLoading = false
+        },
+        unmount() {
+            this.Users = []
+            this.Assignments = []
+            this.UserAssignments = []
+            this.Scores = []
         }
     }
 })

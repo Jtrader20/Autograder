@@ -125,6 +125,7 @@ export abstract class BaseSubmissionHandler {
     
     private async updateGradingDetails(userAssignment: UserAssignment, scoreEarned: number, scoreTotal: number, daychange: number, status: string, token: string, alias: string): Promise<void> {
         userAssignment.submitrange = status
+        userAssignment.scoreearned = scoreEarned
         switch (status) {
             case "EARLY":
                 userAssignment.creditreceived = "FULL";

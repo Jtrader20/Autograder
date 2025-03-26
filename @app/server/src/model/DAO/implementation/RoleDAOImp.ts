@@ -4,6 +4,19 @@ import { DB } from "./database/SQLDatabase";
 import { RowDataPacket } from "mysql2";
 
 export class RoleDAOImp implements RoleDAO {
+    async createAdminRole(alias: string): Promise<Role> {
+        return await DB.databaseOperation<Role>( async (connection) => {
+            const SQL = `
+                INSERT INTO UserRole (alias, role)
+                VALUES (?, ?)
+            `
+
+            await connection.execute(SQL, [alias, RoleTypes.ADMIN])
+
+            const RoleArray: RoleTypes[] = [RoleTypes.ADMIN]
+            return new Role(RoleArray)
+        })
+    }
     async createRole(alias: string): Promise<Role> {
         return await DB.databaseOperation<Role>( async (connection) => {
             const SQL = `
@@ -12,9 +25,8 @@ export class RoleDAOImp implements RoleDAO {
             `
 
             await connection.execute(SQL, [alias, RoleTypes.USER])
-            await connection.execute(SQL, [alias, RoleTypes.ADMIN])
 
-            const RoleArray: RoleTypes[] = [RoleTypes.USER, RoleTypes.ADMIN]
+            const RoleArray: RoleTypes[] = [RoleTypes.USER]
             return new Role(RoleArray)
         })
     }

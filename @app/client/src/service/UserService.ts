@@ -39,4 +39,15 @@ export class UserService extends Service {
 
         return this.facade.getUserList(request)
     }
+
+    public async updateUserGraceDays(authToken: string, admin: string, user: string, gracedays: number): Promise<void> {
+        const request = {
+            authToken,
+            admin,
+            user,
+            gracedays
+        }
+
+        return this.facade.updateGraceDays(request)
+    }
 }

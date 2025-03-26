@@ -1,4 +1,5 @@
 import { createWebHistory, createRouter } from 'vue-router'
+import { useUserStore } from '../store/user'
 
 import HomeView from '../views/HomeView.vue'
 import AuthenticateView from '../views/AuthenticateView.vue'
@@ -7,6 +8,7 @@ import MetricsView from '../views/MetricsView.vue'
 import GraderView from '../views/GraderView.vue'
 import LogoutView from '../views/LogoutView.vue'
 import ScoresView from '../views/ScoresView.vue'
+import AssignmentsView from '../views/AssignmentsView.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -14,17 +16,26 @@ const router = createRouter({
         {
             path: '/',
             name: 'Home',
-            component: HomeView
+            component: HomeView,
+            meta: {
+                logout: true
+            }
         },
         {
             path: '/login',
             name: 'Login',
-            component: AuthenticateView
+            component: AuthenticateView,
+            meta: {
+                logout: true
+            }
         },
         {
             path: '/register',
             name: 'Register',
-            component: AuthenticateView
+            component: AuthenticateView,
+            meta: {
+                logout: true
+            }
         },
         {
             path: '/logout',
@@ -34,34 +45,56 @@ const router = createRouter({
         {
             path: '/user',
             name: 'User',
-            component: UserView
+            component: UserView,
+            meta: {
+                admin: true,
+                user: true
+            }
         },
         {
             path: '/metrics',
             name: 'Metrics',
-            component: MetricsView
+            component: MetricsView,
+            meta: {
+                admin: true
+            }
         },
         {
             path: '/metrics/:id',
             name: 'MetricsID',
-            component: MetricsView
+            component: MetricsView,
+            meta: {
+                admin: true
+            }
         },
         {
             path: '/scores',
             name: 'Scores',
-            component: ScoresView
+            component: ScoresView,
+            meta: {
+                admin: true
+            }
         },
         {
             path: '/grader',
             name: 'Grader',
-            component: GraderView
+            component: GraderView,
+            meta: {
+                admin: true,
+                user: true
+            }
         }, 
         {
             path: '/grader/:id',
             name: 'GraderID',
-            component: GraderView
+            component: GraderView,
+            meta: {
+                admin: true,
+                user: true
+            }
         }
     ]
 })
+
 
 export default router

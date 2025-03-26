@@ -4,6 +4,17 @@ import bcrypt from 'bcryptjs'
 import { StatusTypes } from "../Handlers/GeneralHandler";
 
 export class UserService extends Service {
+    public async insertAdmin (alias: string, firstName: string, lastName: string, password: string): Promise<void> {
+        const hashedPassword = await this.hashPassword(password)
+        await this.UserDAO.createUser(alias, firstName, lastName, hashedPassword)
+        await this.RoleDAO.createAdminRole(alias)
+    }
+    public async setGraceDays (admin: string, token: string, alias: string, gracedays: number): Promise<void> {
+        return await this.secureOperation(token, admin, true, async () => {
+            await this.UserDAO.updateUserGraceDays(alias, gracedays)
+        })
+    }
+
     public async getUserLateDaysRemaining (alias: string, token: string): Promise<number> {
         return await this.secureOperation(token, alias, false, async () => {
             const user: User | null = await this.UserDAO.readUserByAlias(alias)
@@ -67,8 +78,6 @@ export class UserService extends Service {
     }
 
     public async logout (token: string): Promise<void> {
-        this.validatedOperation(token, async () => {
-            await this.AuthDAO.deleteAuthToken(token)
-        })
+        await this.AuthDAO.deleteAuthToken(token)
     }
 }

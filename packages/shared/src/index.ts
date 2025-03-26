@@ -29,6 +29,7 @@ export type { LoginRequest } from './model/network/request/LoginRequest'
 export type { SubmissionRequest } from './model/network/request/SubmissionRequest'
 export type { SubmissionStatTimeRequest } from './model/network/request/SubmissionStatTimeRequest'
 export type { UserRequest } from './model/network/request/UserRequest'
+export type { GraceDaysRequest } from './model/network/request/GraceDaysRequest'
 
 // HTTP Response
 export type { AutograderResponse } from './model/network/response/AutograderResponse'

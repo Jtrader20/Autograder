@@ -1,0 +1,1 @@
+{"version":3,"file":"GraceDaysRequest.d.ts","sourceRoot":"","sources":["../../../../../src/model/network/request/GraceDaysRequest.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAE,MAAM,eAAe,CAAC;AAE5C,MAAM,WAAW,gBAAiB,SAAQ,WAAW;IACjD,KAAK,EAAE,MAAM,CAAC;IACd,IAAI,EAAE,MAAM,CAAC;IACb,SAAS,EAAE,MAAM,CAAA;CACpB"}

@@ -3,6 +3,8 @@ import { DB } from './model/DAO/implementation/database/SQLDatabase'
 import APP from './app'
 import { WebSocketServer } from 'ws'
 import Wsserver from './model/Websocket/Server'
+import { UserService } from './model/Service/UserService'
+import { SQLFactory } from './model/DAO/factory/SQLFactory'
 
 const PORT = process.env.PORT || 4000
 
@@ -10,6 +12,7 @@ async function start() {
     try {
         console.log("Initializing database ------")
         await DB.initialized
+        await insertUsers()
         console.log("Database initalized. Starting server")
 
         const SERVER = createServer(APP)
@@ -24,6 +27,16 @@ async function start() {
         
     } catch (error) {
         console.error('Failed to start server:', (error as Error).message)
+    }
+}
+
+
+async function insertUsers() {
+    try {
+        const userservice: UserService = new UserService(SQLFactory.getInstance())
+        await userservice.insertAdmin('admin', 'System', 'Admin', 'admin')
+    } catch (error) {
+
     }
 }
 

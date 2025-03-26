@@ -66,7 +66,7 @@
                 <div class="h-10 w-10 rounded-full bg-primary-alt flex items-center justify-center">
                     {{ store.initials }}
                 </div>
-        </RouterLink>
+            </RouterLink>
         </div>
     </div>
 </template>

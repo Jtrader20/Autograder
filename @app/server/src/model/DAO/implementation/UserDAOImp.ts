@@ -24,7 +24,7 @@ export class UserDAOImp implements UserDAO {
                 SELECT *
                 FROM User u
                 JOIN UserRole ur ON u.alias = ur.alias
-                WHERE ur.role = 'USER'
+                WHERE ur.role = 'USER' AND ur.role != 'ADMIN'
                 ORDER BY lastName ASC, firstName ASC
             `;
 

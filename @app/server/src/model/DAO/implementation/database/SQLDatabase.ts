@@ -39,22 +39,18 @@ export class SQLDatabase {
                     for (const statement of DBAssignmentData) {
                         await connection.query(statement)
                     }
-                    console.log("Inserted Assignment data")
 
                     for (const statement of DBUserData) {
                         await connection.query(statement)
                     }
-                    console.log("Inserted User Data")
 
                     for (const statement of DBUserRoleData) {
                         await connection.query(statement)
                     }
-                    console.log("Inserted UserRole Data")
 
                     for (const statement of DBSubmissionData) {
                         await connection.query(statement)
                     }
-                    console.log("Inserted Submission Data")
                     
                     console.log("Database setup complete.");
                 } else {
